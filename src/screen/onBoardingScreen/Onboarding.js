@@ -148,7 +148,7 @@ const Onboarding = props => {
             <Text style={styles.skip_text}>Skip</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => props.navigation.navigate('Home')}
+            onPress={() => props.navigation.navigate('MyTabs')}
             style={styles.get_start_btn}>
             <Text style={styles.get_started_text}>Get Started</Text>
           </TouchableOpacity>

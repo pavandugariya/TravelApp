@@ -58,46 +58,85 @@ const bottomCardData = [
     img: require('../../assets/images/cardimg3.png'),
   },
 ];
-const Home = () => {
+const flightList = [
+  {
+    name: 'Jet Airways',
+    images: [
+      {angle: 'front', url: 'https://source.unsplash.com/200x200/?jet-front'},
+      {angle: 'side', url: 'https://source.unsplash.com/200x200/?jet-side'},
+      {angle: 'top', url: 'https://source.unsplash.com/200x200/?jet-top'},
+    ],
+    offer: '20% off on Economy Class',
+  },
+  {
+    name: 'Air India',
+    images: [
+      {
+        angle: 'front',
+        url: 'https://source.unsplash.com/200x200/?air-india-front',
+      },
+      {
+        angle: 'side',
+        url: 'https://source.unsplash.com/200x200/?air-india-side',
+      },
+      {angle: 'top', url: 'https://source.unsplash.com/200x200/?air-india-top'},
+    ],
+    offer: 'Free upgrade to First Class',
+  },
+  // Add more flights as needed
+];
+const flights = [
+  {
+    name: 'Indigo',
+    image: 'https://source.unsplash.com/200x200/?flight',
+  },
+  {
+    name: 'Air India',
+    image: 'https://source.unsplash.com/200x200/?airplane',
+  },
+  {
+    name: 'Jet Airways',
+    image: 'https://source.unsplash.com/200x200/?aviation',
+  },
+];
+
+const TripsScreen = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <CustomHeader />
       <StatusBar hidden={false} backgroundColor={'#fff'} animated={true} />
+      <Image
+        style={{marginVertical: 20}}
+        source={require('../../assets/images/offerimg.png')}
+      />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.search_top_container}>
-          <Icon name="search" size={30} color={'#4b4b4b'} />
-          <TextInput
-            placeholder="Search"
-            placeholderTextColor={'#4b4b4b'}
-            style={styles.text_input}
-          />
-        </View>
-
         <View style={styles.welcome_container}>
-          <Text style={styles.welcome_text_style}>Welcome</Text>
+          <Text style={styles.welcome_text_style}>Latest Offers</Text>
           <Text style={styles.see_all_text}>See all</Text>
         </View>
         <View>
           <Text style={styles.welcome_bottom_text}>
-            Get discount on all time favourite destinations
+            Exciting travel deals available now!
           </Text>
         </View>
         <View>
           <FlatList
-            data={topCardData}
+            data={flights}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             renderItem={({item, index}) => (
               <View style={styles.card_container}>
-                <Image style={styles.bg_image_style} source={item.img} />
+                <Image
+                  style={styles.bg_image_style}
+                  source={{uri: item.image}}
+                />
                 <View style={styles.bottom_contianer}>
-                  <View style={styles.card_top_container}>
-                    <View style={styles.percentage_box}>
-                      <Text style={styles.percentage_text_style}>
-                        {item?.percent}
-                      </Text>
-                    </View>
+                  <View
+                    style={[
+                      styles.card_top_container,
+                      {justifyContent: 'flex-end'},
+                    ]}>
                     <TouchableOpacity>
                       <Icon
                         name={'heart-outline'}
@@ -107,7 +146,7 @@ const Home = () => {
                     </TouchableOpacity>
                   </View>
                   <View style={styles.bottom_text_container}>
-                    <Text style={styles.place_text_style}>{item?.place}</Text>
+                    <Text style={styles.place_text_style}>{item?.name}</Text>
                     <Text style={styles.weeks_text_style}>{item?.time}</Text>
                     <Text style={styles.description_text_style}>
                       {item?.info}
@@ -120,12 +159,12 @@ const Home = () => {
         </View>
         <View style={{marginVertical: 20}}>
           <View style={[styles.welcome_container]}>
-            <Text style={styles.welcome_text_style}>All time favourite</Text>
+            <Text style={styles.welcome_text_style}>Nearest Offers</Text>
             <Text style={styles.see_all_text}>See all</Text>
           </View>
 
           <Text style={styles.welcome_bottom_text}>
-            Wanna go on a trip today !
+            Check offers near to you!
           </Text>
         </View>
         {/* // bottom card  */}
@@ -168,7 +207,7 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default TripsScreen;
 
 const styles = StyleSheet.create({
   container: {

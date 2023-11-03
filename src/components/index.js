@@ -1,2 +1,3 @@
 import CustomHeader from './header/CustomHeader';
-export {CustomHeader};
+import BackHeader from './header/BackHeader';
+export {CustomHeader, BackHeader};
