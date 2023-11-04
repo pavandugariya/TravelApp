@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {ExploreScreen, Home, TripsScreen} from '../../screen';
+import {ExploreScreen, Home, TripsScreen, WeatherScreen} from '../../screen';
 import React from 'react';
 import {Image} from 'react-native';
 
@@ -66,7 +66,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Weather"
-        component={TripsScreen}
+        component={WeatherScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <Image

@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   FlatList,
   Image,
@@ -89,13 +90,17 @@ const flights = [
   {
     name: 'Indigo',
     image: 'https://source.unsplash.com/200x200/?flight',
+    offer: '20% off on Economy Class',
   },
   {
     name: 'Air India',
+    offer: 'Free upgrade to First Class',
+
     image: 'https://source.unsplash.com/200x200/?airplane',
   },
   {
     name: 'Jet Airways',
+    offer: '20% off on Economy Class',
     image: 'https://source.unsplash.com/200x200/?aviation',
   },
 ];
@@ -106,11 +111,11 @@ const TripsScreen = () => {
     <View style={styles.container}>
       <CustomHeader />
       <StatusBar hidden={false} backgroundColor={'#fff'} animated={true} />
-      <Image
-        style={{marginVertical: 20}}
-        source={require('../../assets/images/offerimg.png')}
-      />
       <ScrollView showsVerticalScrollIndicator={false}>
+        <Image
+          style={{marginVertical: 20}}
+          source={require('../../assets/images/offerimg.png')}
+        />
         <View style={styles.welcome_container}>
           <Text style={styles.welcome_text_style}>Latest Offers</Text>
           <Text style={styles.see_all_text}>See all</Text>
@@ -126,32 +131,67 @@ const TripsScreen = () => {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             renderItem={({item, index}) => (
-              <View style={styles.card_container}>
+              <View
+                style={{
+                  width: 167,
+                  height: 197,
+                  // borderWidth: 1,
+                  margin: 10,
+                  borderRadius: 17,
+                  backgroundColor: '#fff',
+                  elevation: 3,
+                }}>
                 <Image
-                  style={styles.bg_image_style}
-                  source={{uri: item.image}}
+                  style={{
+                    width: '100%',
+                    height: 109,
+                    borderTopLeftRadius: 17,
+                    borderTopRightRadius: 17,
+                  }}
+                  source={{uri: item?.image}}
                 />
-                <View style={styles.bottom_contianer}>
-                  <View
-                    style={[
-                      styles.card_top_container,
-                      {justifyContent: 'flex-end'},
-                    ]}>
-                    <TouchableOpacity>
-                      <Icon
-                        name={'heart-outline'}
-                        size={25}
-                        color={'#ffffffb4'}
+                <View
+                  style={{
+                    flex: 1,
+                    borderBottomLeftRadius: 17,
+                    borderBottomRightRadius: 17,
+                    padding: 10,
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('AvailableFlightScreen')}
+                    style={{
+                      flexDirection: 'row',
+                      gap: 10,
+                      alignItems: 'center',
+                    }}>
+                    <View
+                      style={{
+                        width: 25,
+                        height: 25,
+                        borderRadius: 25,
+                        backgroundColor: '#d1dae0',
+                        elevation: 3,
+                        overflow: 'hidden',
+                      }}>
+                      <Image
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                        }}
+                        source={{uri: item?.image}}
                       />
-                    </TouchableOpacity>
-                  </View>
-                  <View style={styles.bottom_text_container}>
-                    <Text style={styles.place_text_style}>{item?.name}</Text>
-                    <Text style={styles.weeks_text_style}>{item?.time}</Text>
-                    <Text style={styles.description_text_style}>
-                      {item?.info}
+                    </View>
+                    <Text style={[{color: '#000', fontSize: 16}]}>
+                      {item?.name}
                     </Text>
-                  </View>
+                  </TouchableOpacity>
+                  <Text
+                    style={[{color: '#0D1118', fontSize: 9, marginTop: 10}]}>
+                    {item?.offer}
+                  </Text>
+                  <Text style={[{color: 'red', fontSize: 9, marginTop: 8}]}>
+                    Offer ends in 01d:09h:58m
+                  </Text>
                 </View>
               </View>
             )}
@@ -179,7 +219,7 @@ const TripsScreen = () => {
                   navigation.navigate('PlaceScreen', item);
                 }}
                 style={styles.card_container}>
-                <Image style={styles.bg_image_style} source={item.img} />
+                <Image style={[styles.bg_image_style]} source={item.img} />
                 <View style={styles.bottom_contianer}>
                   <View
                     style={[
