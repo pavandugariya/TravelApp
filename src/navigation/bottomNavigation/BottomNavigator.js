@@ -1,5 +1,11 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {ExploreScreen, Home, TripsScreen, WeatherScreen} from '../../screen';
+import {
+  ExploreScreen,
+  Home,
+  MapScreen,
+  TripsScreen,
+  WeatherScreen,
+} from '../../screen';
 import React from 'react';
 import {Image} from 'react-native';
 
@@ -54,7 +60,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Discount"
-        component={TripsScreen}
+        component={MapScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <Image
