@@ -10,10 +10,15 @@ import {
   ScrollView,
   StatusBar,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {CustomHeader} from '../../components';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import {
+  Camera,
+  useCameraDevice,
+  useCameraPermission,
+} from 'react-native-vision-camera';
 
 const topCardData = [
   {
@@ -59,6 +64,12 @@ const bottomCardData = [
   },
 ];
 const Home = () => {
+  let user = {
+    age: undefined,
+  };
+  let userAge = user.age ?? 'Not Available'; // nullish coaliscing operator ??
+  // console.log(5 || 6, 5 && 6);
+
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -76,7 +87,9 @@ const Home = () => {
 
         <View style={styles.welcome_container}>
           <Text style={styles.welcome_text_style}>Welcome</Text>
-          <Text style={styles.see_all_text}>See all</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Camera')}>
+            <Text style={styles.see_all_text}>See all</Text>
+          </TouchableOpacity>
         </View>
         <View>
           <Text style={styles.welcome_bottom_text}>

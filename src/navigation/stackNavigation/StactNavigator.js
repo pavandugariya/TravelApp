@@ -3,6 +3,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   AvailableFlightScreen,
+  Camera,
   ConfirmBooking,
   Home,
   Onboarding,
@@ -21,6 +22,7 @@ const StactNavigator = () => {
       <Stack.Screen name="MyTabs" component={MyTabs} />
       <Stack.Screen name="PlaceScreen" component={PlaceScreen} />
       <Stack.Screen name="ConfirmBooking" component={ConfirmBooking} />
+      <Stack.Screen name="Camera" component={Camera} />
       <Stack.Screen
         name="AvailableFlightScreen"
         component={AvailableFlightScreen}

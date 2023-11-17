@@ -8,6 +8,7 @@ import AvailableFlightScreen from './available_screen/AvailableFlightScreen';
 import WeatherScreen from './weather_screen/WeatherScreen';
 import ConfirmBooking from './book_confirm_screen/ConfirmBooking';
 import MapScreen from './map_screen/MapScreen';
+import Camera from './camera/Camera';
 
 export {
   Onboarding,
@@ -20,4 +21,5 @@ export {
   WeatherScreen,
   ConfirmBooking,
   MapScreen,
+  Camera,
 };
