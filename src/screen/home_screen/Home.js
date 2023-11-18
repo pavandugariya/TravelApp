@@ -9,6 +9,7 @@ import {
   View,
   ScrollView,
   StatusBar,
+  Dimensions,
 } from 'react-native';
 import React, {useEffect} from 'react';
 import {CustomHeader} from '../../components';
@@ -19,6 +20,10 @@ import {
   useCameraDevice,
   useCameraPermission,
 } from 'react-native-vision-camera';
+import WavyHeader from '../../components/header/WavyHeader';
+import FlipCard from '../explore_screen/FlipCard';
+import {Defs, Path, Stop, Svg} from 'react-native-svg';
+import LinearGradient from 'react-native-linear-gradient';
 
 const topCardData = [
   {
@@ -73,6 +78,14 @@ const Home = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
+      {/* <WavyHeader
+        customStyles={styles.svgCurve}
+        customHeight={80}
+        customTop={60}
+        customBgColor="#5000ca"
+        customWavePattern="M0,288L48,277.3C96,267,192,245,288,213.3C384,181,480,139,576,138.7C672,139,768,181,864,208C960,235,1056,245,1152,240C1248,235,1344,213,1392,202.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+      /> */}
+
       <CustomHeader />
       <StatusBar hidden={false} backgroundColor={'#fff'} animated={true} />
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -176,6 +189,7 @@ const Home = () => {
             )}
           />
         </View>
+        <FlipCard />
       </ScrollView>
     </View>
   );
@@ -280,5 +294,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 17,
+  },
+  svgCurve: {
+    position: 'absolute',
+    width: Dimensions.get('window').width,
   },
 });
